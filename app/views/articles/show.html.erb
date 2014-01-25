@@ -1,6 +1,9 @@
 <div>
-  <h1></h1>
-  <p>Published </p>
-  <p>Filed under: </p>
-  <div></div>
+  <h1> <%= @article.title %> </h1>
+  <p>Published <%= @article.created_at.strftime('%b %d, %Y') %> </p>
+  <p>Filed under: <% @article.categories.each do |category|%> 
+                    <%= category.name %>
+                  <% end %> 
+  </p>
+  <div> <%= @article.content %> </div>
 </div>
