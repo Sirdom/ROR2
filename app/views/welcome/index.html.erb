@@ -8,6 +8,8 @@
      </h2>
      <div class="article-info">
     Published <%= article.created_at.strftime('%b %d, %Y') %> |
+    Filed under <%= article.categories.map { |category| link_to category.name, category_path(category.id)}.join(', ').html_safe %> 
+
    
      </div>
      <div class="content">
