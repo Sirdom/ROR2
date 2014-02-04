@@ -10,6 +10,7 @@ Wikiful::Application.routes.draw do
   resources :articles
   resources :categories
   resources :users
+  resources :sessions
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
