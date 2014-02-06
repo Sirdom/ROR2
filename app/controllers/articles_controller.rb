@@ -1,15 +1,19 @@
 class ArticlesController < ApplicationController
-  def index
-    @articles = Article.order(updated_at: :desc).limit(25)
-  end
   
-  def show
-    @article = Article.find(params[:id])
-  end
+before_filter :authorize, only: [:new]
   
-  def new
-    @article = Article.new
-  end
+    def index
+      @articles = Article.order(updated_at: :desc).limit(25)
+    end
+  
+    def show
+      @article = Article.find(params[:id])
+    end
+  
+    def new
+      @article = Article.new
+    end
+end 
   
   def create
     @article = Article.new(article_params)
@@ -21,8 +25,8 @@ class ArticlesController < ApplicationController
   end
   
   private
-  def article_params
-    params.require(:article).permit(:title, :content, :category_ids => [])
-  end
+    def article_params
+      params.require(:article).permit(:title, :content, :category_ids => [])
+    end
   
 end 
